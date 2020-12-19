@@ -1,0 +1,48 @@
+{
+  "name": "bvalidator",
+  "description": "Form validation jQuery plug-in.",
+  "version": "1.0.5",
+  "keywords": [
+    "form",
+    "validation",
+    "validator",
+    "jquery",
+    "javascript"
+  ],
+  "homepage": "http://bmauser.github.io/bvalidator",
+  "author": "Bojan Mauser",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bmauser/bvalidator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bmauser/bvalidator/issues"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "bootstrap": "^3.4.1",
+    "codemirror": "^5.48.0",
+    "grunt": "^1.0.4",
+    "grunt-cli": "^1.3.2",
+    "grunt-autoprefixer": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-compress": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-csslint": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-ejs": "latest",
+    "grunt-jscs": "latest",
+    "jquery": "^2"
+  },
+  "files": [
+    "*",
+    "!.DEV",
+    "!dist-docs",
+    "!documentation"
+  ]
+}

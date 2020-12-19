@@ -1,0 +1,85 @@
+﻿@model razorop.EDM.tblemp
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Index", "employee", FormMethod.Post, new { enctype = "multipart/form-data", @datavalidatorvalidate ="", @datavalidatortheme ="bs3form"}))
+{
+@*<div class="form-group">
+    <label class="control-label">Emp name</label>
+    @Html.TextBoxFor(c=>c.emp_name,new { @class="form-control", @datavalidator= "required",@type="email"})
+
+
+</div>*@
+    <table>
+           <tr>
+                <td>emp name </td>
+                <td>
+                    @Html.TextBoxFor(c => c.emp_name)
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>emp address </td>
+                <td>@Html.TextAreaFor(c => c.emp_add)</td>
+            </tr>
+
+            <tr>
+                <td>emp mobile </td>
+                <td>@Html.TextBoxFor(c => c.emp_mob)</td>
+            </tr>
+
+            <tr>
+                <td>emp date of birth </td>
+                <td>@Html.TextBoxFor(c => c.emp_dob,new{ @type= "date"})</td>
+            </tr>
+
+            <tr>
+                <td>emp hobby</td>
+                <td>
+                    @Html.CheckBox("Reading") Reading
+                    @Html.CheckBox("Writing") Writing
+                    @Html.CheckBox("Playing") Playing
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>emp gender</td>
+                <td>
+                    @Html.RadioButtonFor(c => c.emp_gender, "male") Male
+                    @Html.RadioButtonFor(c => c.emp_gender, "female") Female
+                </td>
+            </tr>
+
+            <tr>
+                <td>Profie</td>
+                <td>
+                    <input type="file" name="file" value="file" />
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>Country</td>
+                <td>
+                    @Html.DropDownListFor(c => c.country_id, ViewData["temp"] as List<SelectListItem>, "select country")
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <input type="submit" value="Registration">
+                    <label>
+                        @ViewBag.msg
+                    </label>
+                </td>
+            </tr>
+
+        </table>
+}

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="razorCrudModelStoreContainer" CdmEntityContainer="razorCrudEntities">
+    <EntitySetMapping Name="tblemps">
+      <EntityTypeMapping TypeName="razorCrudModel.tblemp">
+        <MappingFragment StoreEntitySet="tblemp">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+          <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+          <ScalarProperty Name="emp_add" ColumnName="emp_add" />
+          <ScalarProperty Name="emp_mob" ColumnName="emp_mob" />
+          <ScalarProperty Name="emp_dob" ColumnName="emp_dob" />
+          <ScalarProperty Name="emp_hob" ColumnName="emp_hob" />
+          <ScalarProperty Name="emp_gender" ColumnName="emp_gender" />
+          <ScalarProperty Name="emp_profile" ColumnName="emp_profile" />
+          <ScalarProperty Name="emp_status" ColumnName="emp_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblcountries">
+      <EntityTypeMapping TypeName="razorCrudModel.tblcountry">
+        <MappingFragment StoreEntitySet="tblcountry">
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="razorCrudModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblcountry">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="country_name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblemp">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emp_name" Type="varchar(max)" />
+          <Property Name="emp_add" Type="varchar(max)" />
+          <Property Name="emp_mob" Type="varchar" MaxLength="50" />
+          <Property Name="emp_dob" Type="date" />
+          <Property Name="emp_hob" Type="varchar(max)" />
+          <Property Name="emp_gender" Type="varchar" MaxLength="50" />
+          <Property Name="emp_profile" Type="varchar" MaxLength="50" />
+          <Property Name="emp_status" Type="varchar" MaxLength="50" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_tblemp_tblcountry">
+          <End Role="tblcountry" Type="Self.tblcountry" Multiplicity="1" />
+          <End Role="tblemp" Type="Self.tblemp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblcountry">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="tblemp">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="razorCrudModelStoreContainer">
+          <EntitySet Name="tblcountry" EntityType="Self.tblcountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblemp" EntityType="Self.tblemp" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblemp_tblcountry" Association="Self.FK_tblemp_tblcountry">
+            <End Role="tblcountry" EntitySet="tblcountry" />
+            <End Role="tblemp" EntitySet="tblemp" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="razorCrudModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblemp">
+          <Key>
+            <PropertyRef Name="emp_id" />
+          </Key>
+          <Property Name="emp_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emp_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="emp_add" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="emp_mob" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_dob" Type="DateTime" Precision="0" />
+          <Property Name="emp_hob" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="emp_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_profile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="emp_status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblcountry" Relationship="razorCrudModel.FK_tblemp_tblcountry" FromRole="tblemp" ToRole="tblcountry" />
+        </EntityType>
+        <EntityContainer Name="razorCrudEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblemps" EntityType="Self.tblemp" />
+          <EntitySet Name="tblcountries" EntityType="razorCrudModel.tblcountry" />
+          <AssociationSet Name="FK_tblemp_tblcountry" Association="razorCrudModel.FK_tblemp_tblcountry">
+            <End Role="tblcountry" EntitySet="tblcountries" />
+            <End Role="tblemp" EntitySet="tblemps" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblcountry">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblemps" Relationship="razorCrudModel.FK_tblemp_tblcountry" FromRole="tblcountry" ToRole="tblemp" />
+        </EntityType>
+        <Association Name="FK_tblemp_tblcountry">
+          <End Type="razorCrudModel.tblcountry" Role="tblcountry" Multiplicity="1" />
+          <End Type="razorCrudModel.tblemp" Role="tblemp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblcountry">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="tblemp">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="razorCrudModelStoreContainer" CdmEntityContainer="razorCrudEntities">
+          <EntitySetMapping Name="tblemps">
+            <EntityTypeMapping TypeName="razorCrudModel.tblemp">
+              <MappingFragment StoreEntitySet="tblemp">
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+                <ScalarProperty Name="emp_name" ColumnName="emp_name" />
+                <ScalarProperty Name="emp_add" ColumnName="emp_add" />
+                <ScalarProperty Name="emp_mob" ColumnName="emp_mob" />
+                <ScalarProperty Name="emp_dob" ColumnName="emp_dob" />
+                <ScalarProperty Name="emp_hob" ColumnName="emp_hob" />
+                <ScalarProperty Name="emp_gender" ColumnName="emp_gender" />
+                <ScalarProperty Name="emp_profile" ColumnName="emp_profile" />
+                <ScalarProperty Name="emp_status" ColumnName="emp_status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblcountries">
+            <EntityTypeMapping TypeName="razorCrudModel.tblcountry">
+              <MappingFragment StoreEntitySet="tblcountry">
+                <ScalarProperty Name="country_name" ColumnName="country_name" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

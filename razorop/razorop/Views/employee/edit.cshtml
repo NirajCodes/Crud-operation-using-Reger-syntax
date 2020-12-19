@@ -1,0 +1,87 @@
+﻿@model razorop.EDM.tblemp
+
+@{
+    ViewBag.Title= "edit";
+}
+
+<h2>edit</h2>
+@using (Html.BeginForm("edit","employee",FormMethod.Post,new {enctype = "multipart/form-dta" }))
+{
+<table>
+    <tr>
+        <td>emp name</td>
+        <td>
+            @Html.HiddenFor(c=>c.emp_id)
+            @Html.TextBoxFor(c => c.emp_name)
+        </td>
+    </tr>
+
+    <tr>
+        <td>emp address</td>
+        <td>
+            @Html.TextBoxFor(c => c.emp_add)
+        </td>
+    </tr>
+
+    <tr>
+        <td>emp mobile</td>
+        <td>
+            @Html.TextBoxFor(c => c.emp_mob)
+        </td>
+    </tr>
+
+    <tr>
+        <td>emp dob</td>
+        <td>
+            @Html.TextBoxFor(c => c.emp_dob)
+        </td>
+    </tr>
+
+    <tr>
+        <td>emp hobby</td>
+
+        <td>
+            @for (int i = 0; i < Model.checklist.Count; i++)
+            {
+                <label>
+                    @Html.HiddenFor(c=>c.checklist[i].id)
+                @Model.checklist[i].name
+                @Html.CheckBoxFor(c => c.checklist[i].ischecked)
+
+            </label>
+            }
+        </td>
+    </tr>
+
+    <tr>
+        <td>emp gender</td>
+
+        <td>
+            @Html.RadioButtonFor(c => c.emp_gender, "Male") Male
+            @Html.RadioButtonFor(c => c.emp_gender, "Female") Female
+        </td>
+    </tr>
+
+    <tr>
+        <td>emp profile</td>
+        <td>
+            <img src="~/images/@Model.emp_profile" width="100" height="100"/>
+            @Html.HiddenFor(c=>c.emp_profile)
+            <input type="file" name="file" id="file" />
+        </td>
+    </tr>
+
+    <tr>
+        <td>Country</td>
+        <td>
+            @Html.DropDownListFor(c => c.country_id, ViewData["temp"] as List<SelectListItem>, "select country")
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <input type="submit"  value="Registration" />
+        </td>
+    </tr>
+</table>
+}

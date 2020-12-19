@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="razorCrudModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblcountry">
+    <Key>
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="country_name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblemp">
+    <Key>
+      <PropertyRef Name="emp_id" />
+    </Key>
+    <Property Name="emp_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="emp_name" Type="varchar(max)" />
+    <Property Name="emp_add" Type="varchar(max)" />
+    <Property Name="emp_mob" Type="varchar" MaxLength="50" />
+    <Property Name="emp_dob" Type="date" />
+    <Property Name="emp_hob" Type="varchar(max)" />
+    <Property Name="emp_gender" Type="varchar" MaxLength="50" />
+    <Property Name="emp_profile" Type="varchar" MaxLength="50" />
+    <Property Name="emp_status" Type="varchar" MaxLength="50" />
+    <Property Name="country_id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_tblemp_tblcountry">
+    <End Role="tblcountry" Type="Self.tblcountry" Multiplicity="1" />
+    <End Role="tblemp" Type="Self.tblemp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblcountry">
+        <PropertyRef Name="country_id" />
+      </Principal>
+      <Dependent Role="tblemp">
+        <PropertyRef Name="country_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="razorCrudModelStoreContainer">
+    <EntitySet Name="tblcountry" EntityType="Self.tblcountry" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblemp" EntityType="Self.tblemp" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_tblemp_tblcountry" Association="Self.FK_tblemp_tblcountry">
+      <End Role="tblcountry" EntitySet="tblcountry" />
+      <End Role="tblemp" EntitySet="tblemp" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
